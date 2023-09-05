@@ -1,1 +1,1 @@
-# python-progamming-Kehua-Lu
+# Detta repo är för min skoljobb inom python.
