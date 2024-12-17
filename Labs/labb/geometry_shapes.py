@@ -61,31 +61,31 @@ class Circle(Shape):
         return isinstance(other, Circle) and self.radius >= other.radius
 
 class Rectangle(Shape):
-    def __init__(self, x: float, y: float, side1: float, side2: float):
+    def __init__(self, x: float, y: float, width: float, height: float):
         super().__init__(x, y)
-        if side1 <= 0 or side2 <= 0:
+        if width <= 0 or height <= 0:
             raise ValueError("Sides must be positive numbers.")
-        self.side1 = side1
-        self.side2 = side2
+        self.width = width
+        self.height = height
 
     @property
     def area(self) -> float:
-        return self.side1 * self.side2
+        return self.width * self.height
 
     @property
     def perimeter(self) -> float:
-        return 2 * (self.side1 + self.side2)
+        return 2 * (self.width + self.height)
 
     @property
     def is_square(self) -> bool:
-        return self.side1 == self.side2
+        return self.width == self.height
 
     def is_inside(self, px: float, py: float) -> bool:
-        return (self.x - self.side1 / 2 <= px <= self.x + self.side1 / 2) and \
-               (self.y - self.side2 / 2 <= py <= self.y + self.side2 / 2)
+        return (self.x - self.width / 2 <= px <= self.x + self.width / 2) and \
+               (self.y - self.height / 2 <= py <= self.y + self.height / 2)
 
     def __eq__(self, other):
-        return isinstance(other, Rectangle) and self.side1 == other.side1 and self.side2 == other.side2 and super().__eq__(other)
+        return isinstance(other, Rectangle) and self.width == other.width and self.height == other.height and super().__eq__(other)
 
     def __lt__(self, other):
         return isinstance(other, Rectangle) and self.area < other.area
